@@ -3,6 +3,8 @@
 #
 
 require_relative 'user_importer'
+require_relative 'book_importer'
+require_relative 'book_rating_importer'
 
 # Import Users...
 user_importer = UserImporter.new("#{Rails.root}/db/users_sample.csv")
@@ -19,3 +21,8 @@ book_importer.entries.each do |book|
 end
 
 # Import Ratings...
+book_rating_importer = BookRatingImporter.new("#{Rails.root}/db/book_ratings_sample.csv")
+
+book_rating_importer.entries.each do |rating|
+  puts "Book Rating #{rating.inspect} imported!" if rating.save
+end
