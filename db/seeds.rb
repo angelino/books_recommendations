@@ -7,22 +7,47 @@ require_relative 'book_importer'
 require_relative 'book_rating_importer'
 
 # Import Users...
-user_importer = UserImporter.new("#{Rails.root}/db/users_sample.csv")
+puts "#{Time.now} - Users's Import Initialized..."
 
-user_importer.entries.each do |user|
-  puts "User #{user.inspect} imported!" if user.save
-end
+initial_time = Time.now
+
+user_importer = UserImporter.new("#{Rails.root}/db/BX-Users.csv")
+users = user_importer.entries
+User.import users, validate: false
+
+final_time = Time.now
+
+import_time = final_time.to_f - initial_time.to_f
+
+puts "#{Time.now} - Users's Import Finished in #{import_time} seconds"
 
 # Import Books...
-book_importer = BookImporter.new("#{Rails.root}/db/books_sample.csv")
+puts "#{Time.now} - Book's Import Initialized..."
 
-book_importer.entries.each do |book|
-  puts "Book #{book.inspect} imported!" if book.save
-end
+initial_time = Time.now
+
+book_importer = BookImporter.new("#{Rails.root}/db/BX-Books.csv")
+books = book_importer.entries
+Book.import books, validate: false
+
+final_time = Time.now
+
+import_time = final_time.to_f - initial_time.to_f
+
+puts "#{Time.now} - Books's Import Finished in #{import_time} seconds"
 
 # Import Ratings...
-book_rating_importer = BookRatingImporter.new("#{Rails.root}/db/book_ratings_sample.csv")
+puts "#{Time.now} - BookRating's Import Initialized..."
 
-book_rating_importer.entries.each do |rating|
-  puts "Book Rating #{rating.inspect} imported!" if rating.save
-end
+initial_time = Time.now
+
+book_rating_importer = BookRatingImporter.new("#{Rails.root}/db/BX-Book-Ratings.csv")
+ratings = book_rating_importer.entries
+puts "#{Time.now} - Arquivo de BX-Book-Ratings.csv lido"
+BookRating.import ratings, validate: false
+
+final_time = Time.now
+
+import_time = final_time.to_f - initial_time.to_f
+
+puts "Book Ratings's Import Finished in #{import_time} seconds"

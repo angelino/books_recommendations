@@ -15,20 +15,20 @@ class BookRatingImporter
 
   def build_book_ratings
     data.collect do |row|
-      user = User.where(id: row[:userid]).first
+      user = User.where(id: row[:userid]).first || User.new
 
-      book = Book.where(isbn: row[:isbn]).first
+      book = Book.where(isbn: row[:isbn]).first || Book.new
 
-      rating = BookRating.new
-      rating.user = user
-      rating.book = book
-      rating.rating = row[:bookrating]
-
-      rating
+      BookRating.new(
+        user_id: user.id,
+        book_id: book.id,
+        rating:  row[:bookrating]
+      )
     end
   end
 
   def data
     CSV.open(filename, 'r', encoding: 'cp1252', col_sep: ';', headers: true, header_converters: :symbol)
   end
+
 end
