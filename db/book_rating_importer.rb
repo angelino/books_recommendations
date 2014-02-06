@@ -15,13 +15,9 @@ class BookRatingImporter
 
   def build_book_ratings
     data.collect do |row|
-      user = User.where(id: row[:userid]).first || User.new
-
-      book = Book.where(isbn: row[:isbn]).first || Book.new
-
       BookRating.new(
-        user_id: user.id,
-        book_id: book.id,
+        user_id: row[:userid],
+        book_id: books[row[:isbn]],
         rating:  row[:bookrating]
       )
     end
@@ -29,6 +25,10 @@ class BookRatingImporter
 
   def data
     CSV.open(filename, 'r', encoding: 'cp1252', col_sep: ';', headers: true, header_converters: :symbol)
+  end
+
+  def books
+    @books ||= Hash[Book.pluck(:isbn, :id)]
   end
 
 end
