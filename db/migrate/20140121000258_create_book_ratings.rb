@@ -7,5 +7,8 @@ class CreateBookRatings < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :book_ratings, [:book_id, :user_id]
+    add_index :book_ratings, :rating
   end
 end
