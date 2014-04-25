@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140121000258) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "book_ratings", force: true do |t|
     t.integer  "book_id"
     t.integer  "user_id"
@@ -20,6 +23,9 @@ ActiveRecord::Schema.define(version: 20140121000258) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "book_ratings", ["book_id", "user_id"], name: "index_book_ratings_on_book_id_and_user_id", using: :btree
+  add_index "book_ratings", ["rating"], name: "index_book_ratings_on_rating", using: :btree
 
   create_table "books", force: true do |t|
     t.string   "isbn"
