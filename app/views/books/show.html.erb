@@ -1,0 +1,20 @@
+<h1><%= @book.title %></h1>
+<p>ISBN: <%= @book.isbn %></p>
+<p>Author: <%= @book.author %></p>
+<p>Year of Publication: <%= @book.year_of_publication %></p>
+<p>Publisher: <%= @book.publisher %></p>
+
+<h2>Readed by (<%= @book.number_of_readers %>) users.</h2>
+
+<table>
+  <thead>
+    <td>User</td>
+    <td>Rating</td>
+  </thead>
+  <% @book.ratings.each do |r| %>
+  <tr>
+    <td><%= link_to r.user.id, r.user %></td>
+    <td><%= r.rating %></td>
+  </tr>
+  <% end %>
+</table>
