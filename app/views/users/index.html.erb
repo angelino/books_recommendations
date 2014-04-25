@@ -1,0 +1,19 @@
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Leitor</th>
+      <th>Localização</th>
+      <th>Idade</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.id, user_path(user) %></td>
+      <td><%= user.location %></td>
+      <td><%= user.age %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+

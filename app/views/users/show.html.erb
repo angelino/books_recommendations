@@ -1,18 +1,32 @@
-<h2>User</h2>
-<p>ID: <%= @user.id %></p>
-<p>Age: <%= @user.age %></p>
-<p>Location: <%= @user.location %></p>
+<div class="row">
+  <div class="span4">
+    <p><strong>ID:</strong> <%= @user.id %></p>
+    <p><strong>Idade:</strong> <%= @user.age %></p>
+    <p><strong>Localização:</strong> <%= @user.location %></p>
 
-<h3>Readed Books (<%= @user.number_of_readed_books %>)</h3>
-<table>
-  <thead>
-    <td>Book</td>
-    <td>Rating</td>
-  </thead>
-  <% @user.book_ratings.each do |r| %>
-  <tr>
-    <td><%= link_to r.book.title, r.book %></td>
-    <td><%= r.rating %></td>
-  </tr>
-  <% end %>
-</table>
+    <p><%= link_to "Ver livros recomendados", recommendation_path(@user.id), :class => "btn btn-primary" %></p>
+    <p><%= link_to "Ver leitores semelhantes", rank_path(@user.id), :class => "btn btn-primary" %></p>
+  </div>
+
+  <div class="span8">
+    <h4>Livros lidos <span class="label label-primary"><%= @user.number_of_readed_books %></span></h4>
+    <% unless @user.book_ratings.empty? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Título</th>
+          <th>Avaliação</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @user.book_ratings.each do |r| %>
+      <tr>
+        <td><%= link_to r.book.title, r.book %></td>
+        <td><span class="label label-info"><%= r.rating %></span></td>
+      </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+</div>

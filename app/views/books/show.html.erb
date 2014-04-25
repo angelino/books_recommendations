@@ -1,20 +1,30 @@
-<h1><%= @book.title %></h1>
-<p>ISBN: <%= @book.isbn %></p>
-<p>Author: <%= @book.author %></p>
-<p>Year of Publication: <%= @book.year_of_publication %></p>
-<p>Publisher: <%= @book.publisher %></p>
-
-<h2>Readed by (<%= @book.number_of_readers %>) users.</h2>
-
-<table>
-  <thead>
-    <td>User</td>
-    <td>Rating</td>
-  </thead>
-  <% @book.ratings.each do |r| %>
-  <tr>
-    <td><%= link_to r.user.id, r.user %></td>
-    <td><%= r.rating %></td>
-  </tr>
-  <% end %>
-</table>
+<div class="row">
+  <div class="span8">
+    <h3><%= @book.title %></h3>
+    <p><strong>ISBN:</strong> <%= @book.isbn %></p>
+    <p><strong>Autor:</strong> <%= @book.author %></p>
+    <p><strong>Ano de publicação:</strong> <%= @book.year_of_publication %></p>
+    <p><strong>Editora:</strong> <%= @book.publisher %></p>
+  </div>
+  <div class="span4">
+    <h4>Este livro foi lido e avaliado por (<%= @book.number_of_readers %>) leitore(s).</h4>
+    <% unless @book.ratings.empty? %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Leitor</th>
+          <th class="pull-right">Avaliação</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @book.ratings.each do |r| %>
+        <tr>
+          <td><%= link_to r.user.id, r.user %></td>
+          <td><span class="label label-info pull-right"><%= r.rating %></span></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+</div>

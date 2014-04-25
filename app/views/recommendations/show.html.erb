@@ -1,13 +1,29 @@
-<h1>Book Recommendations</h1>
+<div class="row">
+  <div class="span4">
+    <p><strong>ID:</strong> <%= @user.id %></p>
+    <p><strong>Idade:</strong> <%= @user.age %></p>
+    <p><strong>Localização:</strong> <%= @user.location %></p>
 
-<h2>User</h2>
-<p>ID: <%= @user.id %></p>
-<p>Age: <%= @user.age %></p>
-<p>Location: <%= @user.location %></p>
+    <%= link_to "Voltar para meu perfil", user_path(@user) %>
 
-<h3>Recommendations (TOP 10):</h3>
-<ul>
-  <% @recommended_books.each do |book| %>
-    <li><%= link_to book.title, book %></li>
-  <% end %>
-</ul>
+  </div>
+  <div class="span8">
+    <% if @user.book_ratings.empty? %>
+      <h4>
+        Não existem livros recomendados para você.
+      </h4>
+      <span>Leia e avalie pelo menos alguns livros para que possamos montar um perfil e fazer recomendações para você.</span>
+    <% else %>
+      <h4>Os livros mais recomendados...</h4>
+      <table class="table table-striped">
+        <tbody>
+        <% @recommended_books.each do |book| %>
+        <tr>
+          <td><%= link_to book.title, book %></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>

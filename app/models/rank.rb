@@ -1,6 +1,3 @@
-require_relative 'euclidean_distance'
-require_relative 'pearson_correlation'
-
 class Rank
   attr_reader :similarity
 
