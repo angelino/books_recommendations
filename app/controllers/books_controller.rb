@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   def index
-    @books = Book.limit(100)
+    @books = BooksMostRead.new.the_most_read
   end
 
   def show

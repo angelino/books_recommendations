@@ -6,6 +6,8 @@ class Book < ActiveRecord::Base
   alias_method :readers, :users
 
   def number_of_readers
-    book_ratings.count
+    @number_of_readers ||= book_ratings.count
   end
+
 end
+
