@@ -5,6 +5,6 @@ BooksRecommendations::Application.routes.draw do
   get 'users' => 'users#index'
   get 'users/:id' => 'users#show', :as => 'user'
 
-  #get "rank/:user_id" => 'rank#show', :as => 'rank'
-  #get "recommendations/:user_id" => 'recommendations#show', :as => 'recommendation'
+  get "rank/:user_id" => 'rank#show', :as => 'rank'
+  get "recommendations/:user_id" => 'recommendations#show', :as => 'recommendation'
 end
