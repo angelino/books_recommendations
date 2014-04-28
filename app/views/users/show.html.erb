@@ -1,0 +1,18 @@
+<h2>User</h2>
+<p>ID: <%= @user.id %></p>
+<p>Age: <%= @user.age %></p>
+<p>Location: <%= @user.location %></p>
+
+<h3>Readed Books (<%= @user.number_of_readed_books %>)</h3>
+<table>
+  <thead>
+    <td>Book</td>
+    <td>Rating</td>
+  </thead>
+  <% @user.book_ratings.each do |r| %>
+  <tr>
+    <td><%= link_to r.book.title, r.book %></td>
+    <td><%= r.rating %></td>
+  </tr>
+  <% end %>
+</table>
