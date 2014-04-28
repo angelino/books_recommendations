@@ -1,0 +1,15 @@
+<h1>Book Ranking</h1>
+
+<h2>User</h2>
+<p>ID: <%= @user.id %></p>
+<p>Age: <%= @user.age %></p>
+<p>Location: <%= @user.location %></p>
+
+<h3>Similar Users TOTAL (<%= @user.number_of_similar_users %>)</h3>
+
+<h3>Similar Users (TOP 5):</h3>
+<ul>
+  <% @top_similar_users.each do |user| %>
+    <li><%= link_to user.id, user %></li>
+  <% end %>
+</ul>

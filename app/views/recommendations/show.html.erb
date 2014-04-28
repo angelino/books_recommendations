@@ -1,0 +1,13 @@
+<h1>Book Recommendations</h1>
+
+<h2>User</h2>
+<p>ID: <%= @user.id %></p>
+<p>Age: <%= @user.age %></p>
+<p>Location: <%= @user.location %></p>
+
+<h3>Recommendations (TOP 10):</h3>
+<ul>
+  <% @recommended_books.each do |book| %>
+    <li><%= link_to book.title, book %></li>
+  <% end %>
+</ul>
