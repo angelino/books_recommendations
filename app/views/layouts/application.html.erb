@@ -2,13 +2,33 @@
 <html>
 <head>
   <title>BooksRecommendations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
+
 <body>
 
-<%= yield %>
+<div class="container">
+  <header class="navbar navbar-default">
+    <div class="navbar-inner">
+      <div class="container">
+        <%= image_tag 'logo.png' %>
+        <nav>
+          <ul class="nav pull-right">
+            <li><%= link_to 'Página Inicial', '#' %></li>
+            <li><%= link_to 'Leitores', users_path %></li>
+            <li><%= link_to 'Livros', books_path %><li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <%= yield %>
+</div>
 
 </body>
 </html>

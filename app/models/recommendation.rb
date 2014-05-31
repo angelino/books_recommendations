@@ -1,6 +1,3 @@
-require_relative 'pearson_correlation'
-require_relative 'euclidean_distance'
-
 class Recommendation
   attr_reader :similarity
 
