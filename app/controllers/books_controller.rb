@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
   def index
-    @books = BooksMostRead.new.the_most_read
+    # @books = Book.search(params[:search], params[:page])
+    @books = Book.page(params[:page]).per_page(20)
   end
 
   def show

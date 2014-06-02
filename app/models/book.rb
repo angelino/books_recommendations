@@ -9,5 +9,12 @@ class Book < ActiveRecord::Base
     @number_of_readers ||= book_ratings.count
   end
 
+  def self.search(search, page)
+    paginate per_page: 20,
+             page: page,
+             conditions: ['title like ?', "%#{search}%"],
+             order: 'title'
+  end
+
 end
 
