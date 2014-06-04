@@ -7,7 +7,7 @@ require_relative 'book_importer'
 require_relative 'book_rating_importer'
 
 # Import Users...
-puts "#{Time.now} - Users's Import Initialized..."
+puts "#{Time.now} - Users' Import Initialized..."
 
 initial_time = Time.now
 
@@ -19,10 +19,10 @@ final_time = Time.now
 
 import_time = final_time.to_f - initial_time.to_f
 
-puts "#{Time.now} - Users's Import Finished in #{import_time} seconds"
+puts "#{Time.now} - Users' Import Finished in #{import_time} seconds"
 
 # Import Books...
-puts "#{Time.now} - Book's Import Initialized..."
+puts "#{Time.now} - Books' Import Initialized..."
 
 initial_time = Time.now
 
@@ -34,10 +34,10 @@ final_time = Time.now
 
 import_time = final_time.to_f - initial_time.to_f
 
-puts "#{Time.now} - Books's Import Finished in #{import_time} seconds"
+puts "#{Time.now} - Books' Import Finished in #{import_time} seconds"
 
 # Import Ratings...
-puts "#{Time.now} - BookRating's Import Initialized..."
+puts "#{Time.now} - Book Ratings' Import Initialized..."
 
 initial_time = Time.now
 
@@ -50,4 +50,4 @@ final_time = Time.now
 
 import_time = final_time.to_f - initial_time.to_f
 
-puts "Book Ratings's Import Finished in #{import_time} seconds"
+puts "Book Ratings' Import Finished in #{import_time} seconds"
