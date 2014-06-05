@@ -17,12 +17,13 @@ class EuclideanDistance
     # Add up the squares of all the differences
     squares = []
     prefs[person1].each do |k, v|
+      puts "Book: #{k}"
       v2 = prefs[person2][k]
 
       if v2
         square = ((v - v2) ** 2)
         puts "(#{v} - #{v2}) ** 2 = #{square}"
-        squares << square 
+        squares << square
       end
     end
 
