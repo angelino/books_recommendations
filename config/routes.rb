@@ -1,4 +1,6 @@
 BooksRecommendations::Application.routes.draw do
+  root 'dashboard#index'
+
   get 'books' => 'books#index'
   get 'books/:id' => 'books#show', :as => 'book'
 
