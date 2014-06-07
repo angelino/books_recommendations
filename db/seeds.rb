@@ -51,3 +51,13 @@ final_time = Time.now
 import_time = final_time.to_f - initial_time.to_f
 
 puts "Book Ratings' Import Finished in #{import_time} seconds"
+
+# Removing Book Ratings without reader...
+puts "Removing Book Ratings without reader..."
+total_without_reader = BookRating.delete_all(user_id: nil)
+puts "Book Ratings removed #{total_without_reader}"
+
+# Removing Book Ratings with 0 rating...
+puts "Removing Book Ratings with 0 rating..."
+total_with_zero_rating = BookRating.delete_all(rating: 0)
+puts "Book Ratings removed #{total_with_zero_rating}"
